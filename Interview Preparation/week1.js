@@ -63,18 +63,40 @@ function miniMaxSum(arr) {
 }
 
 {
-    /*  */
+    /* Time Conversion
+    Given a time in 12-hour AM/PM format, convert it to military (24-hour) time.
+
+    Note: - 12:00:00AM on a 12-hour clock is 00:00:00 on a 24-hour clock.
+    - 12:00:00PM on a 12-hour clock is 12:00:00 on a 24-hour clock. */
 }
 
 function timeConversion(s) {
-    let hour = s.slice(0, 1);
-    console.log(hour);
+    let hour = 0;
+    let result;
+
+    if (
+        (s[8] === "A" && s[0] !== "1") ||
+        (s[8] === "P" && s[0] === "1" && s[1] === "2")
+    ) {
+        result = s.slice(0, 8);
+    } else if (s[8] === "A" && s[0] === "1" && s[1] === "2") {
+        result = "00" + s.slice(2, 8);
+    } else {
+        hour = parseInt(s.slice(0, 2));
+        hour += 12;
+        let reStringHour = hour.toString();
+        result = reStringHour + s.slice(2, 8);
+    }
+
+    return result;
 }
+
+console.log(timeConversion("07:05:45PM"));
 
 timeConversion("07:05:45PM");
 
 {
-    /*  */
+    /* */
 }
 
 {
