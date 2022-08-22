@@ -32,11 +32,16 @@ function plusMinus(arr) {
     return positive, negative, zero;
 }
 
+console.log("Plus Minus:");
 plusMinus([-4, 3, -9, 0, 4, 1]);
 
 {
     /* 
     Min-Max Sum - 
+
+    Given five positive integers, find the minimum and maximum values that can be 
+    calculated by summing exactly four of the five integers. Then print the respective 
+    minimum and maximum values as a single line of two space-separated long integers.
 
 */
 }
@@ -61,6 +66,10 @@ function miniMaxSum(arr) {
 
     return minMax;
 }
+
+console.log("Min-Max Sum:");
+arr = [1, 3, 5, 7, 9];
+console.log(miniMaxSum(arr));
 
 {
     /* Time Conversion
@@ -91,9 +100,8 @@ function timeConversion(s) {
     return result;
 }
 
+console.log("Time Conversion:");
 console.log(timeConversion("07:05:45PM"));
-
-timeConversion("07:05:45PM");
 
 {
     /* */
@@ -132,89 +140,85 @@ picture frame
     */
 }
 
-function processData(inputBlock) {
-    //console.log("'"+inputBlock.replace(/\n/g, '\\n').replace(/\r/g, '\\r')+"'");
-    //let cleanInput = inputBlock.replace(/\r/g, '');
-    let inputArray = inputBlock.split("\r\n");
-    let outputArray = [];
+// function processData(inputBlock) {
+//     //console.log("'"+inputBlock.replace(/\n/g, '\\n').replace(/\r/g, '\\r')+"'");
+//     //let cleanInput = inputBlock.replace(/\r/g, '');
+//     let inputArray = inputBlock.split("\r\n");
+//     let outputArray = [];
 
-    for (let input of inputArray) {
-        let newString = "";
-        if (input[0] === "S") {
-            if (input[2] === "M") {
-                for (let i = 4; i < input.length - 2; i++) {
-                    if (input[i] === input[i].toUpperCase()) {
-                        newString += " " + input[i].toLowerCase();
-                    } else {
-                        newString += input[i];
-                    }
-                    if (input[i] === "(") {
-                        return newString;
-                    }
-                }
-                // console.log(newString);
-            }
-            if (input[2] === "C") {
-                newString += input[4].toLowerCase();
-                for (let i = 5; i < input.length; i++) {
-                    if (input[i] === input[i].toUpperCase() && i) {
-                        newString += " " + input[i].toLowerCase();
-                    } else {
-                        newString += input[i];
-                    }
-                }
-                // console.log(newString);
-            }
-            if (input[2] === "V") {
-                for (let i = 4; i < input.length; i++) {
-                    if (input[i] === input[i].toUpperCase() && i) {
-                        newString += " " + input[i].toLowerCase();
-                    } else {
-                        newString += input[i];
-                    }
-                }
-                // console.log(newString);
-            }
-        }
-        if (input[0] === "C") {
-            if (input[2] === "C") {
-                newString += input[4].toUpperCase();
-                for (let i = 5; i < input.length; i++) {
-                    if (input[i] === " ") {
-                        i++;
-                        newString += input[i].toUpperCase();
-                    } else {
-                        newString += input[i];
-                    }
-                }
-                // console.log(newString);
-            }
-            if (input[2] === "V" || input[2] === "M") {
-                for (let i = 4; i < input.length; i++) {
-                    if (input[i] === " ") {
-                        i++;
-                        newString += input[i].toUpperCase();
-                    } else {
-                        newString += input[i];
-                    }
-                }
-                if (input[2] === "M") {
-                    newString += "()";
-                }
-                // console.log(newString);
-            }
-        }
+//     for (let input of inputArray) {
+//         let newString = "";
+//         if (input[0] === "S") {
+//             if (input[2] === "M") {
+//                 for (let i = 4; i < input.length - 2; i++) {
+//                     if (input[i] === input[i].toUpperCase()) {
+//                         newString += " " + input[i].toLowerCase();
+//                     } else {
+//                         newString += input[i];
+//                     }
+//                     if (input[i] === "(") {
+//                         return newString;
+//                     }
+//                 }
+//                 // console.log(newString);
+//             }
+//             if (input[2] === "C") {
+//                 newString += input[4].toLowerCase();
+//                 for (let i = 5; i < input.length; i++) {
+//                     if (input[i] === input[i].toUpperCase() && i) {
+//                         newString += " " + input[i].toLowerCase();
+//                     } else {
+//                         newString += input[i];
+//                     }
+//                 }
+//                 // console.log(newString);
+//             }
+//             if (input[2] === "V") {
+//                 for (let i = 4; i < input.length; i++) {
+//                     if (input[i] === input[i].toUpperCase() && i) {
+//                         newString += " " + input[i].toLowerCase();
+//                     } else {
+//                         newString += input[i];
+//                     }
+//                 }
+//                 // console.log(newString);
+//             }
+//         }
+//         if (input[0] === "C") {
+//             if (input[2] === "C") {
+//                 newString += input[4].toUpperCase();
+//                 for (let i = 5; i < input.length; i++) {
+//                     if (input[i] === " ") {
+//                         i++;
+//                         newString += input[i].toUpperCase();
+//                     } else {
+//                         newString += input[i];
+//                     }
+//                 }
+//                 // console.log(newString);
+//             }
+//             if (input[2] === "V" || input[2] === "M") {
+//                 for (let i = 4; i < input.length; i++) {
+//                     if (input[i] === " ") {
+//                         i++;
+//                         newString += input[i].toUpperCase();
+//                     } else {
+//                         newString += input[i];
+//                     }
+//                 }
+//                 if (input[2] === "M") {
+//                     newString += "()";
+//                 }
+//                 // console.log(newString);
+//             }
+//         }
 
-        outputArray.push(newString);
-    }
-    let finalString = outputArray.join("\n");
-    console.log(finalString);
-    return finalString;
-}
-
-{
-    /*  */
-}
+//         outputArray.push(newString);
+//     }
+//     let finalString = outputArray.join("\n");
+//     console.log(finalString);
+//     return finalString;
+// }
 
 {
     /*  */
@@ -223,3 +227,43 @@ function processData(inputBlock) {
 {
     /*  */
 }
+
+{
+    /*  */
+}
+
+// Median
+
+function median(arr) {
+    console.log(arr);
+    arr.sort((a, b) => {
+        if (a > b) return 1;
+        if (a < b) return -1;
+        return 0;
+    });
+    // let temp;
+
+    // for (let i = 0; i < arr.length; i++) {
+    //     for (let j = i + 1; j < arr.length; j++) {
+    //         if (arr[i] > arr[j]) {
+    //             temp = arr[i];
+    //             arr[i] = arr[j];
+    //             arr[j] = temp;
+    //         }
+    //     }
+    // }
+
+    console.log("sortedArray:", arr);
+
+    let middle = Math.floor(arr.length / 2);
+    console.log("middle:", middle);
+
+    let median = arr[middle];
+    console.log("median:", median);
+
+    return median;
+}
+
+let testArr = [3, 6, 9, 2, 4, 6, 1, 3, 2];
+console.log("Find Median");
+console.log(median(testArr));
