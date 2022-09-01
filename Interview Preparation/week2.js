@@ -24,9 +24,10 @@ function lonelyinteger(a) {
     return;
 }
 
+console.log("Lonely Integer");
 a = [1, 2, 3, 4, 3, 2, 1];
-
 console.log(lonelyinteger(a));
+console.log();
 
 {
     /* Grading Students
@@ -61,16 +62,60 @@ function gradingStudents(grades) {
 }
 
 {
-    /*  */
+    /* Flipping Bits
+    You will be given a list of 32 bit unsigned integers. Flip all the bits ( and ) and return the result as an unsigned integer.
+    */
 }
+
+function flippingBits(n) {
+    // Use bitwise operator
+    return ~n >>> 0;
+}
+
+console.log("Flipping Bits");
+let toFlip = 2147483647;
+console.log(flippingBits(toFlip));
+console.log();
+
+{
+    /* Diagonal Difference
+    Given a square matrix, calculate the absolute difference between the sums of its diagonals.
+
+For example, the square matrix arr is shown below:
+    1 2 3
+    4 5 6
+    9 8 9
+
+    */
+}
+
+function diagonalDifference(arr) {
+    let count = 0;
+    let position = arr.length - 1;
+    for (let i = 0; i < arr.length; i++) {
+        count += arr[i][i];
+        count -= arr[i][position];
+        position--;
+    }
+    return Math.abs(count);
+}
+
+console.log("Diagonal Difference");
+let matrix = [
+    [11, 2, 4],
+    [4, 5, 6],
+    [10, 8, -12],
+];
+console.log(diagonalDifference(matrix));
+console.log();
 
 {
     /*  */
 }
 
-{
-    /*  */
-}
+console.log("");
+
+console.log();
 
 {
     /*  */
