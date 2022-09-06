@@ -70,11 +70,33 @@ console.log(rotateLeft(4, arr)); // expect [5,1,2,3,4] to be returned
 console.log();
 
 {
-    /*  */
+    /* 
+    Number Line Jumps
+    
+    You are choreographing a circus show with various animals. For one act, you are given two kangaroos on a number line ready to jump in the positive direction (i.e, toward positive infinity).
+
+The first kangaroo starts at location x1 and moves at a rate of v1 meters per jump.
+The second kangaroo starts at location x2 and moves at a rate of v2 meters per jump.
+You have to figure out a way to get both kangaroos at the same location at the same time as part of the show. If it is possible, return YES, otherwise return NO.
+*/
+}
+function kangaroo(x1, v1, x2, v2) {
+    let one = x1;
+    let two = x2;
+
+    for (let i = 0; i < 10000; i++) {
+        if (one === two) {
+            return "YES";
+        }
+        one += v1;
+        two += v2;
+    }
+
+    return "NO";
 }
 
-console.log("");
-
+console.log("Number Line Jumps");
+console.log(kangaroo(0, 3, 4, 2));
 console.log();
 
 {
@@ -86,11 +108,42 @@ console.log("");
 console.log();
 
 {
-    /*  */
+    /* Closest Numbers
+    
+    Sorting is useful as the first step in many different tasks. 
+    The most common task is to make finding things easier, but there are other uses as well. 
+    In this case, it will make it easier to determine which pair or pairs of elements have the smallest absolute difference between them.
+    */
 }
 
-console.log("");
+function closestNumbers(arr) {
+    arr.sort((a, b) => a - b);
+    let minDifference = Infinity;
+    let result = [];
 
+    for (let i = 0; i < arr.length - 1; i++) {
+        let difference = arr[i + 1] - arr[i];
+        if (difference < minDifference) {
+            minDifference = difference;
+        }
+        // console.log("MINDIFFERENCE:", minDifference);
+    }
+    for (let i = 0; i < arr.length - 1; i++) {
+        let difference = arr[i + 1] - arr[i];
+        if (difference === minDifference) {
+            result.push(arr[i], arr[i + 1]);
+            // console.log("RESULT:", result);
+        }
+    }
+
+    return result;
+}
+console.log("Closest Numbers");
+let nums = [
+    -20, -3916237, -357920, -3620601, 7374819, -7330761, 30, 6246457, -6461594,
+    266854,
+];
+console.log(closestNumbers(nums));
 console.log();
 
 {
