@@ -147,11 +147,32 @@ console.log(closestNumbers(nums));
 console.log();
 
 {
-    /*  */
+    /* Tower Breakers
+    
+    Two players are playing a game of Tower Breakers! Player 1 always moves first, and both players always play optimally.The rules of the game are as follows:
+        Initially there are  towers.
+        Each tower is of height .
+        The players move in alternating turns.
+        In each turn, a player can choose a tower of height  and reduce its height to , where  and  evenly divides .
+        If the current player is unable to make a move, they lose the game.
+        Given the values of  and , determine which player will win. If the first player wins, return . Otherwise, return .
+    */
 }
 
-console.log("");
+function towerBreakers(n, m) {
+    // If the number of towers is even, player 2 will win because every move can be matched
+    // If the number of towers is odd, player 1 will win because the last tower can be taken to 1 by player 1
+    // if the measurement of the towers is 1, player 1 automatically loses because no moves can be made
+    if (n % 2 === 0 || m === 1) {
+        return 2;
+    } else {
+        return 1;
+    }
+}
 
+console.log("Tower Breakers");
+console.log(towerBreakers(2, 2));
+console.log(towerBreakers(1, 4));
 console.log();
 
 {
