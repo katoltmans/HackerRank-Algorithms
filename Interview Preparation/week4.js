@@ -176,11 +176,34 @@ console.log(towerBreakers(1, 4));
 console.log();
 
 {
-    /*  */
+    /*
+    Absolute Minimum difference in an Array
+    
+    The absolute difference is the positive difference between two values a and b, is written |a-b| or |b-a| and they are equal. 
+    Given an array of integers, find the minimum absolute difference between any two elements in the array.
+    */
 }
 
-console.log("");
+function minimumAbsoluteDifference(arr) {
+    // Iterate through the array finding the absolute difference of each pair
+    // if the difference is smaller than the previus difference, set a new minimum difference
 
+    arr.sort((a, b) => a - b);
+    let min = Infinity;
+
+    for (let i = 0; i < arr.length - 1; i++) {
+        let difference = Math.abs(arr[i + 1] - arr[i]);
+        // console.log("DIFFERENCE:", difference);
+        if (difference < min) {
+            min = difference;
+        }
+    }
+
+    return min;
+}
+
+console.log("Absolute Minimum Difference");
+console.log(minimumAbsoluteDifference([1, -3, 71, 68, 17])); //expect 3 (71 - 68 = 3)
 console.log();
 
 {
