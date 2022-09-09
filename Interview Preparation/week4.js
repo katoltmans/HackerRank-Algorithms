@@ -207,11 +207,106 @@ console.log(minimumAbsoluteDifference([1, -3, 71, 68, 17])); //expect 3 (71 - 68
 console.log();
 
 {
-    /*  */
+    /* 
+    Caesar Cypher
+
+    ulius Caesar protected his confidential information by encrypting it using a cipher. 
+    Caesar's cipher shifts each letter by a number of letters. 
+    If the shift takes you past the end of the alphabet, just rotate back to the front of the alphabet. 
+    In the case of a rotation by 3, w, x, y and z would map to z, a, b and c.
+    */
 }
 
-console.log("");
+function caesarCipher(s, k) {
+    // Create a shifted alphabet array by k places
+    // find the index of value in the original array and replace it with the value at the matching index in the shifted array
 
+    let alphabet = [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "k",
+        "l",
+        "m",
+        "n",
+        "o",
+        "p",
+        "q",
+        "r",
+        "s",
+        "t",
+        "u",
+        "v",
+        "w",
+        "x",
+        "y",
+        "z",
+    ];
+    let cypherAlphabet = [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "k",
+        "l",
+        "m",
+        "n",
+        "o",
+        "p",
+        "q",
+        "r",
+        "s",
+        "t",
+        "u",
+        "v",
+        "w",
+        "x",
+        "y",
+        "z",
+    ];
+    let result = "";
+
+    for (let i = 0; i < k; i++) {
+        let toRotate = cypherAlphabet.shift();
+        cypherAlphabet.push(toRotate);
+        // cypherAlphabet.unshift(cypherAlphabet.pop());
+    }
+    console.log("CYPHER ALPHABET:", cypherAlphabet);
+
+    for (let i = 0; i < s.length; i++) {
+        let index = 0;
+        if (alphabet.includes(s[i])) {
+            index = alphabet.indexOf(s[i]);
+            result = result + cypherAlphabet[index];
+        } else if (alphabet.includes(s[i].toLowerCase())) {
+            index = alphabet.indexOf(s[i].toLowerCase());
+            let cypherChar = cypherAlphabet[index].toUpperCase();
+            result = result + cypherChar;
+        } else {
+            result = result + s[i];
+        }
+    }
+
+    // console.log("RESULT:", result);
+    return result;
+}
+
+console.log("Caesar Cypher:");
+let code = "middle-Outz";
+console.log(caesarCipher(code, 2)); // expect "okffng-Qwvb"
 console.log();
 
 {
