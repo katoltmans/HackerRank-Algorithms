@@ -176,11 +176,45 @@ console.log(misereNim([9, 8, 4, 4, 4, 7]));
 console.log();
 
 {
-    /*  */
+    /*
+    Gaming Array
+    
+    Andy wants to play a game with his little brother, Bob. The game starts with an array of distinct integers and the rules are as follows:
+
+        -Bob always plays first.
+        -In a single move, a player chooses the maximum element in the array. He removes it and all elements to its right. For example, if the starting array arr={2,3,5,4,1}, then it becomes arr' after removing [5,4,1].
+        -The two players alternate turns.
+        -The last player who can make a move wins.
+    Andy and Bob play g games. Given the initial array for each game, find and print the name of the winner on a new line. If Andy wins, print ANDY; if Bob wins, print BOB.
+    To continue the example above, in the next move Andy will remove 3. Bob will then remove 2 and win because there are no more integers to remove.
+    */
 }
 
-console.log("");
+function gamingArray(arr) {
+    // Count number of moves
+    // even count = "ANDY", odd count = "BOB"
+    //
 
+    let max = 0;
+    let count = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+            count++;
+        }
+    }
+
+    if (count % 2 === 0) {
+        return "ANDY";
+    } else {
+        return "BOB";
+    }
+}
+
+console.log("Gaming Array");
+console.log(gamingArray([5, 2, 6, 3, 4])); //expect ANDY
+console.log(gamingArray([3, 1])); //expect BOB
 console.log();
 
 {
