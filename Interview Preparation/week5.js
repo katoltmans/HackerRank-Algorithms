@@ -218,11 +218,59 @@ console.log(gamingArray([3, 1])); //expect BOB
 console.log();
 
 {
-    /*  */
+    /*
+    Forming a Magic Square
+    
+    We define a magic square to be an n x n matrix of distinct positive integers from 1 to n^2 where the sum of any row, column, or diagonal of length n 
+    is always equal to the same number: the magic constant.
+    You will be given a 3x3 matrix s of integers in the inclusive range [1,9]. We can convert any digit a to any other digit b in the range [1,9]
+    at cost of |a-b|. Given s, convert it into a magic square at minimal cost. Print this cost on a new line.
+    Note: The resulting magic square must contain distinct integers in the inclusive range [1,9].
+    */
 }
 
-console.log("");
+function formingMagicSquare(s) {
+    // set possibilities to the limited number of working magic square orders
+    // flatten to array to compare to each possibility
+    // find the absolute difference between each value in each possibility and the corresponding value in the flattened array
+    // that sum of all differences = cost
+    // Store the difference of each possibility and compare to the previous minimum to find the absolute minimum
+    // return the absolute minimum
+    let possibilities = [
+        [8, 1, 6, 3, 5, 7, 4, 9, 2],
+        [6, 1, 8, 7, 5, 3, 2, 9, 4],
+        [4, 9, 2, 3, 5, 7, 8, 1, 6],
+        [2, 9, 4, 7, 5, 3, 6, 1, 8],
+        [8, 3, 4, 1, 5, 9, 6, 7, 2],
+        [4, 3, 8, 9, 5, 1, 2, 7, 6],
+        [6, 7, 2, 1, 5, 9, 8, 3, 4],
+        [2, 7, 6, 9, 5, 1, 4, 3, 8],
+    ];
+    let min = Number.POSITIVE_INFINITY;
+    s = s.flat();
+    // console.log("S:", s);
 
+    for (let i = 0; i < possibilities.length; i++) {
+        let difference = 0;
+        for (let j = 0; j < s.length; j++) {
+            difference += Math.abs(possibilities[i][j] - s[j]);
+        }
+        if (difference < min) {
+            min = difference;
+        }
+    }
+
+    return min;
+}
+
+console.log("Forming A Magic Square");
+console.log(
+    formingMagicSquare([
+        [4, 9, 2],
+        [3, 5, 7],
+        [8, 1, 5],
+    ])
+); // expect 1
 console.log();
 
 {
