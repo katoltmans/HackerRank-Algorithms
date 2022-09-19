@@ -274,11 +274,44 @@ console.log(
 console.log();
 
 {
-    /*  */
+    /*
+    Recursive Digit Sum
+
+    We define super digit of an integer x using the following rules:
+    Given an integer, we need to find the super digit of the integer.
+        *If x has only 1 digit, then its super digit is x.
+        *Otherwise, the super digit of x is equal to the super digit of the sum of the digits of x. (Keep solving until 1 digit is left)
+    */
 }
 
-console.log("");
+function superDigit(n, k) {
+    // If k = 1, return k
+    // concatenate n k number of times
+    // Slice k and convert to integers to add together
 
+    if (n.length === 1) {
+        return parseInt(n);
+    }
+
+    let sum = 0;
+    let numLength = n.length;
+
+    for (let i = 0; i < numLength; i++) {
+        let toAdd = parseInt(n[i]);
+        // console.log("TOADD:", toAdd);
+        sum += toAdd;
+        // console.log("SUM:", sum);
+    }
+
+    sum *= k;
+    n = sum.toString();
+    // console.log("N:", n);
+
+    return superDigit(n, 1);
+}
+
+console.log("Recursive Digit Sum");
+console.log(superDigit("148", 3)); // expect 3
 console.log();
 
 {
