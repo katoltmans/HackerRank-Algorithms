@@ -360,9 +360,33 @@ console.log(counterGame(6)); // expect "Richard"
 console.log();
 
 {
-    /*  */
+    /*
+    Sum vs XOR
+    
+    Given an integer n, find each x such that:
+        0 <= x <= n
+        n+x = n^x
+    Return the number of x's satisfying the criteria.
+    */
 }
 
-console.log("");
+function sumXor(n) {
+    // Convert n into a bit string
+    // Use regEx match to count the zeros in the pattern
+    // The answer is 2 to the power of the zeroes count
 
+    if (n < 2) {
+        return 1;
+    }
+    let exponentBits = n.toString(2);
+    // console.log("BIT PATTERN:", exponentBits);
+    let zeroesCount = exponentBits.match(/0/g).length;
+    // console.log("ZEROS COUNT:", zeroesCount)
+    let count = 2 ** zeroesCount;
+    return count;
+}
+
+console.log("Sum vs XOR");
+console.log(sumXor(5)); // expect 2
+console.log(sumXor(10)); // expect 4
 console.log();
