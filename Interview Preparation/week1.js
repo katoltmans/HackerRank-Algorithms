@@ -34,6 +34,7 @@ function plusMinus(arr) {
 
 console.log("Plus Minus:");
 plusMinus([-4, 3, -9, 0, 4, 1]);
+console.log();
 
 {
     /* 
@@ -70,6 +71,7 @@ function miniMaxSum(arr) {
 console.log("Min-Max Sum:");
 arr = [1, 3, 5, 7, 9];
 console.log(miniMaxSum(arr));
+console.log();
 
 {
     /* Time Conversion
@@ -104,8 +106,42 @@ console.log("Time Conversion:");
 console.log(timeConversion("07:05:45PM"));
 
 {
-    /* */
+    /*
+    Breaking Records
+    
+    Maria plays college basketball and wants to go pro. Each season she maintains a record of her play. 
+    She tabulates the number of times she breaks her season record for most points and least points in a game. 
+    Points scored in the first game establish her record for the season, and she begins counting from there.
+    */
 }
+
+function breakingRecords(scores) {
+    let min = scores[0];
+    let max = scores[0];
+    let count = [0, 0];
+
+    if (scores.length < 1) {
+        return count;
+    }
+
+    for (let i = 0; i < scores.length; i++) {
+        if (scores[i] < min) {
+            min = scores[i];
+            count[1] += 1;
+        } else if (scores[i] > max) {
+            max = scores[i];
+            count[0] += 1;
+        }
+    }
+
+    // console.log("MIN: ", min);
+    // console.log("MAX: ", max);
+    return count;
+}
+
+console.log("Breaking Records");
+console.log(breakingRecords([10, 5, 20, 20, 4, 5, 2, 25, 1])); // Expect [2, 4]
+console.log();
 
 {
     /* Your task is to write a program that creates or splits Camel Case variable, method, and class names.
@@ -267,3 +303,4 @@ function median(arr) {
 let testArr = [3, 6, 9, 2, 4, 6, 1, 3, 2];
 console.log("Find Median");
 console.log(median(testArr));
+console.log();
