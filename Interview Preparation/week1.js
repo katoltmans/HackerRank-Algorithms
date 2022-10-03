@@ -144,7 +144,10 @@ console.log(breakingRecords([10, 5, 20, 20, 4, 5, 2, 25, 1])); // Expect [2, 4]
 console.log();
 
 {
-    /* Your task is to write a program that creates or splits Camel Case variable, method, and class names.
+    /* 
+    Camel Case 4
+    
+    Your task is to write a program that creates or splits Camel Case variable, method, and class names.
     Sample Input
 
 S;M;plasticCup()
@@ -176,102 +179,97 @@ picture frame
     */
 }
 
-// function processData(inputBlock) {
-//     //console.log("'"+inputBlock.replace(/\n/g, '\\n').replace(/\r/g, '\\r')+"'");
-//     //let cleanInput = inputBlock.replace(/\r/g, '');
-//     let inputArray = inputBlock.split("\r\n");
-//     let outputArray = [];
+function processData(inputBlock) {
+    //console.log("'"+inputBlock.replace(/\n/g, '\\n').replace(/\r/g, '\\r')+"'");
+    //let cleanInput = inputBlock.replace(/\r/g, '');
+    let inputArray = inputBlock.split();
+    let outputArray = [];
 
-//     for (let input of inputArray) {
-//         let newString = "";
-//         if (input[0] === "S") {
-//             if (input[2] === "M") {
-//                 for (let i = 4; i < input.length - 2; i++) {
-//                     if (input[i] === input[i].toUpperCase()) {
-//                         newString += " " + input[i].toLowerCase();
-//                     } else {
-//                         newString += input[i];
-//                     }
-//                     if (input[i] === "(") {
-//                         return newString;
-//                     }
-//                 }
-//                 // console.log(newString);
-//             }
-//             if (input[2] === "C") {
-//                 newString += input[4].toLowerCase();
-//                 for (let i = 5; i < input.length; i++) {
-//                     if (input[i] === input[i].toUpperCase() && i) {
-//                         newString += " " + input[i].toLowerCase();
-//                     } else {
-//                         newString += input[i];
-//                     }
-//                 }
-//                 // console.log(newString);
-//             }
-//             if (input[2] === "V") {
-//                 for (let i = 4; i < input.length; i++) {
-//                     if (input[i] === input[i].toUpperCase() && i) {
-//                         newString += " " + input[i].toLowerCase();
-//                     } else {
-//                         newString += input[i];
-//                     }
-//                 }
-//                 // console.log(newString);
-//             }
-//         }
-//         if (input[0] === "C") {
-//             if (input[2] === "C") {
-//                 newString += input[4].toUpperCase();
-//                 for (let i = 5; i < input.length; i++) {
-//                     if (input[i] === " ") {
-//                         i++;
-//                         newString += input[i].toUpperCase();
-//                     } else {
-//                         newString += input[i];
-//                     }
-//                 }
-//                 // console.log(newString);
-//             }
-//             if (input[2] === "V" || input[2] === "M") {
-//                 for (let i = 4; i < input.length; i++) {
-//                     if (input[i] === " ") {
-//                         i++;
-//                         newString += input[i].toUpperCase();
-//                     } else {
-//                         newString += input[i];
-//                     }
-//                 }
-//                 if (input[2] === "M") {
-//                     newString += "()";
-//                 }
-//                 // console.log(newString);
-//             }
-//         }
+    for (let input of inputArray) {
+        let newString = "";
+        if (input[0] === "S") {
+            if (input[2] === "M") {
+                for (let i = 4; i < input.length - 2; i++) {
+                    if (input[i] === input[i].toUpperCase()) {
+                        newString += " " + input[i].toLowerCase();
+                    } else {
+                        newString += input[i];
+                    }
+                    if (input[i] === "(") {
+                        return newString;
+                    }
+                }
+                // console.log(newString);
+            }
+            if (input[2] === "C") {
+                newString += input[4].toLowerCase();
+                for (let i = 5; i < input.length; i++) {
+                    if (input[i] === input[i].toUpperCase() && i) {
+                        newString += " " + input[i].toLowerCase();
+                    } else {
+                        newString += input[i];
+                    }
+                }
+                // console.log(newString);
+            }
+            if (input[2] === "V") {
+                for (let i = 4; i < input.length; i++) {
+                    if (input[i] === input[i].toUpperCase() && i) {
+                        newString += " " + input[i].toLowerCase();
+                    } else {
+                        newString += input[i];
+                    }
+                }
+                // console.log(newString);
+            }
+        }
+        if (input[0] === "C") {
+            if (input[2] === "C") {
+                newString += input[4].toUpperCase();
+                for (let i = 5; i < input.length; i++) {
+                    if (input[i] === " ") {
+                        i++;
+                        newString += input[i].toUpperCase();
+                    } else {
+                        newString += input[i];
+                    }
+                }
+                // console.log(newString);
+            }
+            if (input[2] === "V" || input[2] === "M") {
+                for (let i = 4; i < input.length; i++) {
+                    if (input[i] === " ") {
+                        i++;
+                        newString += input[i].toUpperCase();
+                    } else {
+                        newString += input[i];
+                    }
+                }
+                if (input[2] === "M") {
+                    newString += "()";
+                }
+                // console.log(newString);
+            }
+        }
 
-//         outputArray.push(newString);
-//     }
-//     let finalString = outputArray.join("\n");
-//     console.log(finalString);
-//     return finalString;
-// }
-
-{
-    /*  */
+        outputArray.push(newString);
+    }
+    let finalString = outputArray.join();
+    // console.log(finalString);
+    return finalString;
 }
 
-{
-    /*  */
-}
-
-{
-    /*  */
-}
+console.log("Camel Case 4");
+console.log(processData("C;M;mouse pad")); // expect mousePad()
+console.log(processData("C;C;code swarm")); // expect CodeSwarm
+console.log(processData("S;C;OrangeHighlighter")); // expect orange highlighter
+console.log(processData("S;V;iPad")); // expect i pad
+console.log();
 
 // Median
 
 function median(arr) {
-    console.log(arr);
+    // console.log(arr);
     arr.sort((a, b) => {
         if (a > b) return 1;
         if (a < b) return -1;
@@ -289,13 +287,13 @@ function median(arr) {
     //     }
     // }
 
-    console.log("sortedArray:", arr);
+    // console.log("sortedArray:", arr);
 
     let middle = Math.floor(arr.length / 2);
-    console.log("middle:", middle);
+    // console.log("middle:", middle);
 
     let median = arr[middle];
-    console.log("median:", median);
+    // console.log("median:", median);
 
     return median;
 }
@@ -304,3 +302,37 @@ let testArr = [3, 6, 9, 2, 4, 6, 1, 3, 2];
 console.log("Find Median");
 console.log(median(testArr));
 console.log();
+
+{
+    /*
+    Divisible Sum Pairs
+
+    Given an array of integers and a positive integer k, determine the number of (i,j) pairs where i < j and ar[i] + ar[j] is divisible by k.
+    */
+}
+
+function divisibleSumPairs(n, k, ar) {
+    // Write your code here
+    let count = 0;
+
+    for (let i = 0; i < n; i++) {
+        for (let j = i + 1; j < n; j++) {
+            if ((ar[i] + ar[j]) % k === 0) {
+                count++;
+            }
+        }
+    }
+    return count;
+}
+
+console.log("Divisible Sum Pairs");
+console.log(divisibleSumPairs(6, 3, [1, 3, 2, 6, 1, 2])); // expect 5
+console.log();
+
+{
+    /*  */
+}
+
+{
+    /*  */
+}
