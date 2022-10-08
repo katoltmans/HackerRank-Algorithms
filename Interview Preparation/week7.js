@@ -1,8 +1,10 @@
 {
-    /*  */
+    /*
+    The Bomberman Game
+    */
 }
 
-console.log("");
+console.log("The Bomberman Game");
 
 console.log();
 
@@ -52,43 +54,90 @@ console.log(minimumBribes([2, 5, 1, 3, 4])); // Expect "Too Chaotic"
 console.log();
 
 {
-    /*  */
+    /*
+    Goodland Electricity
+    */
 }
 
-console.log("");
+console.log("Goodland Electricity");
 
 console.log();
 
 {
-    /*  */
+    /*
+    Sherlock and the Valid String
+    */
 }
 
-console.log("");
+console.log("Sherlock and the Valid String");
 
 console.log();
 
 {
-    /*  */
+    /*
+    Climbing the Leaderboard
+    */
 }
 
-console.log("");
+console.log("Climbing the Leaderboard");
 
 console.log();
 
-{
-    /*  */
+class LinkedList {
+    constructor() {
+        this.head = null;
+        this.size = 0;
+    }
 }
 
-console.log("");
+class ListNode {
+    constructor(data) {
+        this.data = data;
+        this.next = null;
+    }
+}
 
+let node1 = new ListNode(5);
+let node2 = new ListNode(4);
+let node3 = new ListNode(3);
+let node4 = new ListNode(2);
+let node5 = new ListNode(1);
+
+let singlyLinkedList = new LinkedList(node1);
+
+{
+    /*
+    Reverse a Linked List
+    */
+}
+
+console.log("Reverse a Linked List");
+console.log();
 console.log();
 
 {
-    /*  */
+    /*
+    Reverse a Doubly Linked List
+    */
 }
 
-console.log("");
+function reverse(llist) {
+    // While the function traverses the list, it swaps the next and previous and then resets the head with the previous (now next) node.
+    let head = null;
 
+    while (llist != null) {
+        //swap next with previous
+        [llist.next, llist.prev] = [llist.prev, llist.next];
+        //set the head to the current llist node
+        head = llist;
+        // Set llist with the previous (now next) node
+        llist = llist.prev;
+    }
+
+    return head;
+}
+
+console.log("Reverse a Doubly Linked List");
 console.log();
 
 {
