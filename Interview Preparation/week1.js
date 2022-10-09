@@ -330,8 +330,36 @@ console.log(divisibleSumPairs(6, 3, [1, 3, 2, 6, 1, 2])); // expect 5
 console.log();
 
 {
-    /*  */
+    /*
+    Sparse Arrays
+
+    There is a collection of input strings and a collection of query strings. 
+    For each query string, determine how many times it occurs in the list of input strings. Return an array of the results.
+    */
 }
+
+function matchingStrings(strings, queries) {
+    // Write your code here
+    let results = [];
+
+    for (let i = 0; i < queries.length; i++) {
+        let count = 0;
+        for (let j = 0; j < strings.length; j++) {
+            if (queries[i] == strings[j]) {
+                count++;
+            }
+        }
+        results.push(count);
+    }
+    return results;
+}
+
+console.log("Sparse Arrays");
+console.log(
+    matchingStrings(["aba", "baba", "aba", "xzxb"], ["aba", "xzxb", "ab"])
+); // expect [2, 1, 0]
+console.log(matchingStrings(["def", "de", "fgh"], ["de", "lmn", "fgh"])); // expect [1, 0, 1]
+console.log();
 
 {
     /*  */
