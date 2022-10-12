@@ -56,7 +56,68 @@ console.log();
 {
     /*
     Goodland Electricity
+
+    Goodland is a country with a number of evenly spaced cities along a line. The distance between adjacent cities is 1 unit. 
+    There is an energy infrastructure project planning meeting, and the government needs to know the fewest number of power plants 
+    needed to provide electricity to the entire list of cities. Determine that number. If it cannot be done, return -1.
+
+    You are given a list of city data. Cities that may contain a power plant have been labeled 1. Others not suitable for building a plant are labeled 0.
+    Given a distribution range of k, find the lowest number of plants that must be built such that all cities are served. 
+    The distribution range limits supply to cities where distance is less than k.
     */
+}
+
+function pylons(k, arr) {
+    // If k number of indexes in a row all contain 0 - return -1
+    // When a 1 is found, add to count and iterate forward to next section
+
+    let zeroCount = 0;
+
+    // Return -1 if there are too many 0's in a row
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === 0) {
+            zeroCount++;
+        } else {
+            zeroCount = 0;
+        }
+
+        if (zeroCount === 2 * k - 1) {
+            return -1;
+        }
+
+        if (i === arr.length - 1 && zeroCount >= k) {
+            return -1;
+        }
+
+        if (i === k && zeroCount >= k) {
+            return -1;
+        }
+    }
+
+    let stationCount = 0;
+    let potential = -k;
+    let lastValid = -k;
+
+    // Add to stationCount if outside of the range of the last station placed
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === 1) {
+            potential = i;
+        }
+        if (lastValid + (2 * k - 1) === i && lastValid !== potential) {
+            stationCount++;
+            lastValid = potential;
+        }
+    }
+    // count station in the final position if a 1
+    if (
+        lastValid !== potential &&
+        potential >= 0 &&
+        lastValid + k - 1 < arr.length
+    ) {
+        stationCount++;
+    }
+
+    return stationCount;
 }
 
 console.log("Goodland Electricity");
@@ -141,10 +202,40 @@ console.log("Reverse a Doubly Linked List");
 console.log();
 
 {
-    /*  */
+    /*
+    Insert a Node to Specific Position - Linked List
+    
+    */
 }
 
-console.log("");
+function insertNodeAtPosition(llist, data, position) {
+    // Add data to a new node and assign the current node's next to the new node next to the assigned location
+    // The new node then becomes the current node's next
+    // Use a runner to track the position along the list to insert the new node at the proper location
+    let current = llist;
+    let currentPosition = 1;
+
+    while (current.next != null) {
+        // Insert a new node when the current position along the list = insertion point (position)
+        if (currentPosition === position) {
+            let newNode = new SinglyLinkedList();
+            newNode.data = data;
+            console.log("NEW NODE:", newNode.data);
+            newNode.next = current.next;
+            current.next = newNode;
+            break;
+        } else {
+            // Move along the node while keeping track of location in the list
+            current = current.next;
+            currentPosition += 1;
+            console.log("CURRENT:", current.data);
+        }
+    }
+    // return the head of the list
+    return llist;
+}
+
+console.log("Insert a Node to Specific Position - Linked List");
 
 console.log();
 
