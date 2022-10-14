@@ -254,3 +254,123 @@ console.log();
 console.log("");
 
 console.log();
+
+// function rpn(inputs) {
+//     let tempArray = [];
+//     let hold = [];
+//     let result = [];
+
+//     for (let i = 0; i < inputs.length; i++) {
+//         if (!Number.isInteger(inputs[i])) {
+//             if (inputs[i] === "+") {
+//                 let newValue = tempArray.reduce((a, b) => a + b);
+//                 if (result.length === 0) {
+//                     result.push(newValue);
+//                 } else if (!Number.isInteger(inputs[i + 2])) {
+//                     temp = result[0];
+//                     result.pop();
+//                     result.push(temp + newValue);
+//                     console.log("RESULT:", result);
+//                     tempArray = [];
+//                 } else {
+//                     hold.push(newValue);
+//                     tempArray = [];
+//                     console.log("HOLD VALUE:", hold);
+//                 }
+//             }
+//             if (inputs[i] === "-") {
+//                 let newValue = tempArray.reduce((a, b) => a + b);
+//                 if (result.length === 0) {
+//                     result.push(newValue);
+//                 } else if (!Number.isInteger(inputs[i + 2])) {
+//                     temp = result[0];
+//                     result.pop();
+//                     result.push(temp - newValue);
+//                     console.log("RESULT:", result);
+//                     tempArray = [];
+//                 } else {
+//                     hold.push(newValue);
+//                     tempArray = [];
+//                     console.log("HOLD VALUE:", hold);
+//                 }
+//             }
+//             if (inputs[i] === "/") {
+//                 let newValue = tempArray.reduce((a, b) => a + b);
+//                 if (result.length === 0) {
+//                     result.push(newValue);
+//                 } else if (!Number.isInteger(inputs[i + 2])) {
+//                     temp = result[0];
+//                     result.pop();
+//                     result.push(temp / newValue);
+//                     console.log("RESULT:", result);
+//                     tempArray = [];
+//                 } else {
+//                     hold.push(newValue);
+//                     tempArray = [];
+//                     console.log("HOLD VALUE:", hold);
+//                 }
+//             }
+//             if (inputs[i] === "*") {
+//                 let newValue = tempArray.reduce((a, b) => a + b);
+//                 if (result.length === 0) {
+//                     result.push(newValue);
+//                 } else if (!Number.isInteger(inputs[i + 2])) {
+//                     temp = result[0];
+//                     result.pop();
+//                     result.push(temp * newValue);
+//                     console.log("RESULT:", result);
+//                     tempArray = [];
+//                 } else {
+//                     hold.push(newValue);
+//                     tempArray = [];
+//                     console.log("HOLD VALUE:", hold);
+//                 }
+//             }
+//         } else {
+//             tempArray.push(inputs[i]);
+//             console.log("TEMP ARRAY:", tempArray);
+//         }
+//     }
+//     console.log("TOTAL:", result[0]);
+//     return result[0];
+// }
+
+function rpn(inputs) {
+    // Push all numbers to a temp stack until you reach an operator.
+    // Once you hit an operator, you pop until the stack is empty and push the result onto the stack.
+    let accumulator = [];
+    var operatorsString = "+/-*";
+    for (let i = 0; i < inputs.length; i++) {
+        if (operatorsString.includes(inputs[i])) {
+            if (accumulator.length >= 2) {
+                let operand1 = accumulator.pop();
+                let operand2 = accumulator.pop();
+                // let operationString = `operand2 ${inputs[i]} operand1`;
+                // accumulator.push(eval(operationString));
+                switch (inputs[i]) {
+                    case "+":
+                        accumulator.push(operand2 + operand1);
+                        break;
+                    case "-":
+                        accumulator.push(operand2 - operand1);
+                        break;
+                    case "/":
+                        accumulator.push(operand2 / operand1);
+                        break;
+                    case "*":
+                        accumulator.push(operand2 * operand1);
+                        break;
+                }
+            }
+        } else {
+            accumulator.push(inputs[i]);
+        }
+        console.log(accumulator);
+    }
+    return accumulator.pop();
+}
+
+console.log("rpn");
+console.log(rpn([4, 2, "+", 3, "*"]));
+console.log(rpn([4, 2, "*", 5, 7, "*", "+"]));
+console.log(rpn([4, 2, 3, "*", 5, 7, "*", "+", "-"])); // 4 -(2*3 + 5*7) = -37
