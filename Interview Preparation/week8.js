@@ -83,16 +83,95 @@ function sortedInsert(llist, data) {
     return llist;
 }
 
-console.log("");
-
-console.log();
-
 {
-    /*  */
+    /*
+    Queue Using Two Stacks
+
+    A queue is an abstract data type that maintains the order in which elements were added to it, allowing the oldest elements to be removed from the front 
+    and new elements to be added to the rear. This is called a First-In-First-Out (FIFO) data structure because the first element added to the queue 
+    (i.e., the one that has been waiting the longest) is always the first one to be removed.
+
+    A basic queue has the following operations:
+
+    * Enqueue: add a new element to the end of the queue.
+    * Dequeue: remove the element from the front of the queue and return it.
+
+    In this challenge, you must first implement a queue using two stacks. Then process q queries, where each query is one of the following 3 types:
+
+    1 x: Enqueue element x into the end of the queue.
+    2: Dequeue the element at the front of the queue.
+    3: Print the element at the front of the queue.
+    
+    */
 }
 
-console.log("");
+function processData(input) {
+    // Create a process to iterate through queries
+    // Execute process that matches querie number
+    // Return printed values only
+    // 1. Enqueue given value to end of stack
+    // 2. Dequeue first value in stack
+    // 3. Print current first value of the stack
 
+    // console.log(input);
+
+    let stack1 = [];
+    let stack2 = [];
+
+    for (let i = 0; i < input.length; i++) {
+        // console.log("IO:", input[i][0]);
+        switch (input[i][0]) {
+            case "1":
+                let pushValue = input[i].slice(2);
+                // console.log("PUSH VALUE:", pushValue);
+                stack1.push(pushValue);
+                break;
+            case "2":
+                if (stack1.length === 1) {
+                    stack1.pop();
+                    // console.log("POPPED 1 ELEMENT")
+                    break;
+                } else {
+                    for (let j = stack1.length - 1; j > 0; j--) {
+                        // console.log("stack1[j]", stack1[j]);
+                        stack2.push(stack1[j]);
+                        stack1.pop();
+                    }
+                    // console.log("STACK1:", stack1);
+                    // console.log("STACK2:", stack2);
+                    stack1.pop();
+
+                    for (let j = stack2.length - 1; j >= 0; j--) {
+                        stack1.push(stack2[j]);
+                        stack2.pop();
+                    }
+                    // console.log("STACK1:", stack1);
+
+                    break;
+                }
+            case "3":
+                console.log(stack1[0]);
+                break;
+        }
+    }
+    // console.log("STACK1:", stack1);
+}
+
+console.log("Queue Using Two Stacks");
+console.log(
+    processData([
+        "1 42",
+        "2",
+        "1 14",
+        "3",
+        "1 28",
+        "3",
+        "1 60",
+        "1 78",
+        "2",
+        "2",
+    ])
+); // expect 14 14
 console.log();
 
 {
