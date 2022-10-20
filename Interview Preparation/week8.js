@@ -175,11 +175,52 @@ console.log(
 console.log();
 
 {
-    /*  */
+    /*
+    Sherlock and Anagrams
+    
+    Two strings are anagrams of each other if the letters of one string can be rearranged to form the other string. 
+    Given a string, find the number of pairs of substrings of the string that are anagrams of each other.
+    */
 }
 
-console.log("");
+function sherlockAndAnagrams(s) {
+    // Create a map of the frequency of each substring
+    // Sort substrings to compare letters of each
+    // Increase the ongoing count every time a repeated substring is found
 
+    let frequencyMap = [];
+    let count = 0;
+    s = s.split("");
+    // console.log("S", s);
+
+    for (let i = 0; i < s.length; i++) {
+        let subStr = "";
+        for (let j = i; j < s.length; j++) {
+            subStr = (subStr + s[j]).split("").sort().join("");
+            // console.log("SUBSTRING:", subStr);
+
+            if (!!frequencyMap[subStr]) {
+                // count += frequencyMap[subStr];
+                frequencyMap[subStr] += 1;
+            } else {
+                frequencyMap[subStr] = 1;
+            }
+        }
+    }
+    // console.log("FREQUENCY MAP:", frequencyMap);
+
+    for (let key in frequencyMap) {
+        // console.log("FREQUENCYMAP[key]:", frequencyMap[key]);
+        let anagrams = (frequencyMap[key] * (frequencyMap[key] - 1)) / 2;
+        count += anagrams;
+        // console.log("COUNT:", count);
+    }
+    return count;
+}
+
+console.log("Sherlock and Anagrams");
+console.log(sherlockAndAnagrams("tttt")); // expect 10
+console.log(sherlockAndAnagrams("ifailuhkqq")); // Expect 3
 console.log();
 
 {
