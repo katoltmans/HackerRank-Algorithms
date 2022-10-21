@@ -267,11 +267,81 @@ console.log(superReducedString("baab")); // expect "Empty String"
 console.log();
 
 {
-    /*  */
+    /*
+    Balanced Brackets
+    
+    A bracket is considered to be any one of the following characters: (, ), {, }, [, or ].
+    Two brackets are considered to be a matched pair if the an opening bracket (i.e., (, [, or {) occurs to the left of a closing bracket (i.e., ), ], or })    
+    of the exact same type. There are three types of matched pairs of brackets: [], {}, and ().
+    A matching pair of brackets is not balanced if the set of brackets it encloses are not matched. For example, {[(])} is not balanced because the contents 
+    in between { and } are not balanced. The pair of square brackets encloses a single, unbalanced opening bracket, (, and the pair of parentheses encloses 
+    a single, unbalanced closing square bracket, ].
+    By this logic, we say a sequence of brackets is balanced if the following conditions are met:
+        * It contains no unmatched brackets.
+        * The subset of brackets enclosed within the confines of a matched pair of brackets is also a matched pair of brackets.
+    Given n strings of brackets, determine whether each sequence of brackets is balanced. If a string is balanced, return YES. Otherwise, return NO.
+    */
 }
 
-console.log("");
+function isBalanced(s) {
+    // If an array length is odd, return "NO"
+    // Push characters to the stack
+    // if current pop matches current character, leave removed
+    // if current pop matches does not equal current character, push both pop and current character
+    // If closing bracket does not match popped value from stack, return "NO"
+    // If stack length === 0 when finished, return "YES", otherwise return "NO"
 
+    let stack = [];
+
+    if (s.length % 2 !== 0) {
+        return "NO";
+    }
+
+    for (let i = 0; i < s.length; i++) {
+        if (stack.length === 0) {
+            stack.push(s[i]);
+        } else {
+            switch (stack[stack.length - 1]) {
+                case "(":
+                    if (s[i] === ")") {
+                        stack.pop();
+                    } else {
+                        stack.push(s[i]);
+                    }
+                    break;
+                case "{":
+                    if (s[i] === "}") {
+                        stack.pop();
+                    } else {
+                        stack.push(s[i]);
+                    }
+                    break;
+                case "[":
+                    if (s[i] === "]") {
+                        stack.pop();
+                    } else {
+                        stack.push(s[i]);
+                    }
+                    break;
+                default:
+                    stack.push(s[i]);
+            }
+        }
+    }
+    // console.log("STACK:", stack);
+
+    if (stack.length !== 0) {
+        return "NO";
+    } else {
+        return "YES";
+    }
+}
+
+console.log("Balanced Brackets");
+console.log(isBalanced("{[()]}")); // expect YES
+console.log(isBalanced("{{)[](}}")); // expect NO
+console.log(isBalanced("{(([])[])[]]}")); // expect NO
+console.log(isBalanced("{(([])[])[]}[]")); // expect YES
 console.log();
 
 {
