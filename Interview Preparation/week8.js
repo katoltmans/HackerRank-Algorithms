@@ -224,11 +224,46 @@ console.log(sherlockAndAnagrams("ifailuhkqq")); // Expect 3
 console.log();
 
 {
-    /*  */
+    /*
+    Super Reduced String
+
+    Reduce a string of lowercase characters in range ascii[‘a’..’z’]by doing a series of operations. 
+    In each operation, select a pair of adjacent letters that match, and delete them.
+    Delete as many characters as possible using this method and return the resulting string. 
+    If the final string is empty, return Empty String
+    */
 }
 
-console.log("");
+function superReducedString(s) {
+    // Iterate through s string checking if adjacent letters match
+    // If they match, set the new string to a concatination of slices on either side
+    // If resulting string is empty, return "Empty String"
 
+    let finalStr = s;
+
+    if (finalStr === "") {
+        return "Empty String";
+    }
+
+    for (let i = 0; i < finalStr.length - 1; i++) {
+        if (finalStr[i] === finalStr[i + 1]) {
+            finalStr = finalStr.slice(0, i) + finalStr.slice(i + 2);
+            // console.log("FINAL STRING(in loop):", finalStr);
+            break;
+        }
+    }
+
+    if (s.length === finalStr.length) {
+        return finalStr;
+    }
+
+    // console.log("FINAL STRING:", finalStr);
+    return superReducedString(finalStr);
+}
+
+console.log("Super Reduced String");
+console.log(superReducedString("aaabccddd")); // expect "abd"
+console.log(superReducedString("baab")); // expect "Empty String"
 console.log();
 
 {
