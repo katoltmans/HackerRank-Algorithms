@@ -74,11 +74,37 @@ console.log(waiter([3, 3, 4, 4, 9], 2)); // expect [4,4, 9, 3, 3]
 console.log();
 
 {
-    /*  */
+    /*
+    Stock Maximize
+
+    Your algorithms have become so good at predicting the market that you now know what the share price of Wooden Orange Toothpicks Inc. 
+    (WOT) will be for the next number of days. Each day, you can either buy one share of WOT, sell any number of shares of WOT that you own, 
+    or not make any transaction at all. What is the maximum profit you can obtain with an optimum trading strategy?
+    */
 }
 
-console.log("");
+function stockmax(prices) {
+    // Set the last value to max and iterate backwards through the array.
+    // If the vext value is less than max, add what would have been the daily profit onto profit (max - dayily buy price)
+    // If the value is greater than max, set that profit as the new max
 
+    let max = prices[prices.length - 1];
+    let profit = 0;
+
+    for (let i = prices.length - 2; i >= 0; i--) {
+        if (prices[i] < max) {
+            profit += max - prices[i];
+        } else {
+            max = prices[i];
+        }
+    }
+    return profit;
+}
+
+console.log("Stock Maximize");
+console.log(stockmax([5, 4, 3, 4, 5])); // expect 4
+console.log(stockmax([1, 2, 100])); // expect 197
+console.log(stockmax([5, 3, 2])); // expect 0
 console.log();
 
 {
