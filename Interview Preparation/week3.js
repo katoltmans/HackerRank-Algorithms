@@ -82,40 +82,36 @@ console.log();
 }
 
 function migratoryBirds(arr) {
-    // console.log("arr:", arr);
-    let sortedArray = arr.sort((a, b) => a - b);
-    let birdMap = {};
+    // Map the frequency of each bird type (key = type #, value = frequency)
+    // Return the key of the largest frequency (smallest key of tie)
+
     let max = 0;
+    let birdKey = 0;
+    let frequencies = {};
 
-    // console.log("SORTED ARRAY:", sortedArray);
-
-    // Create map
-    for (let i = 0; i < sortedArray.length; i++) {
-        if (!!birdMap[sortedArray[i]]) {
-            birdMap[sortedArray[i]] += 1;
+    for (let i = 0; i < arr.length; i++) {
+        if (!!frequencies[arr[i]]) {
+            frequencies[arr[i]] += 1;
         } else {
-            birdMap[sortedArray[i]] = 1;
+            frequencies[arr[i]] = 1;
         }
     }
 
-    // console.log("BIRD MAP:", birdMap);
+    // console.log("FREQUENCIES:", frequencies);
 
-    // Set max
-    for (let key in birdMap) {
-        if (birdMap[key] > max) {
-            max = birdMap[key];
+    for (let key in frequencies) {
+        if (frequencies[key] > max) {
+            max = frequencies[key];
+            birdKey = key;
         }
     }
-
-    // console.log("MAX:", max);
-
-    // Find 1st key of max value
-    for (let key in birdMap) {
-        if (birdMap[key] === max) {
-            return key;
-        }
-    }
+    return birdKey;
 }
+
+console.log("Migratory Birds");
+console.log(migratoryBirds([1, 4, 4, 4, 5, 3])); // expect 4
+console.log(migratoryBirds([1, 2, 3, 4, 5, 4, 3, 2, 1, 3, 4])); // expect 3
+console.log();
 
 {
     /* Subarray Division
