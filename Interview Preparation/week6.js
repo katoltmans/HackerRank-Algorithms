@@ -176,11 +176,50 @@ console.log(formingMagicSquare([4, 8, 2], [4, 5, 7][(6, 1, 6)])); // expect 4
 console.log();
 
 {
-    /*  */
+    /*
+    Recursive Digit Sum
+
+    We define super digit of an integer x using the following rules:
+    Given an integer, we need to find the super digit of the integer.
+    If x has only 1 digit, then its super digit is x.
+    Otherwise, the super digit of x is equal to the super digit of the sum of the digits of x.
+    For example, the super digit of  will be calculated as:
+        super_digit(9875)   	9+8+7+5 = 29 
+        super_digit(29) 	2 + 9 = 11
+        super_digit(11)		1 + 1 = 2
+        super_digit(2)		= 2  
+    */
 }
 
-console.log("");
+function superDigit(n, k) {
+    // If k = 1, return k
+    // concatenate n k number of times
+    // Slice k and convert to integers to add together
 
+    if (n.length === 1) {
+        return parseInt(n);
+    }
+
+    let sum = 0;
+    let numLength = n.length;
+
+    for (let i = 0; i < numLength; i++) {
+        let toAdd = parseInt(n[i]);
+        // console.log("TOADD:", toAdd);
+        sum += toAdd;
+        // console.log("SUM:", sum);
+    }
+
+    sum *= k;
+
+    n = sum.toString();
+
+    return superDigit(n, 1);
+}
+
+console.log("Recursive Digit Sum");
+console.log(superDigit("9875", 4)); // expect 8
+console.log(superDigit("148", 3)); // expect 3
 console.log();
 
 {
