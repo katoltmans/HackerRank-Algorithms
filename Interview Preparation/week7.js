@@ -168,7 +168,10 @@ let singlyLinkedList = new LinkedList(node1);
 
 {
     /*
-    Reverse a Linked List
+    Reverse a Linked List - CODE ONLY
+
+    Given the pointer to the head node of a linked list, change the next pointers of the nodes so that their order is reversed. 
+    The head pointer given may be null meaning that the initial list is empty.
     */
 }
 
@@ -203,7 +206,7 @@ console.log();
 
 {
     /*
-    Insert a Node to Specific Position - Linked List
+    Insert a Node to Specific Position - Linked List - CODE ONLY
     
     */
 }
