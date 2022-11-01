@@ -223,11 +223,47 @@ console.log(superDigit("148", 3)); // expect 3
 console.log();
 
 {
-    /*  */
+    /*
+    Counter game
+    
+    Louise and Richard have developed a numbers game. They pick a number and check to see if it is a power of 2. If it is, they divide it by 2. 
+    If not, they reduce it by the next lower number which is a power of 2. Whoever reduces the number to 1 wins the game. Louise always starts.
+    Given an initial value, determine who wins the game.
+    */
 }
 
-console.log("");
+function counterGame(n) {
+    // check if n is a power of two - if so divide by 2
+    // If not power of 2 - find difference between n and closest power of 2
 
+    let count = 0;
+
+    if (n === 1) {
+        return "Richard";
+    }
+
+    while (n > 1) {
+        if (n % 2 === 0) {
+            n = n / 2;
+            count++;
+        } else {
+            let power = Math.floor(Math.log2(n));
+            let closest = Math.pow(2, power);
+            n = n - closest;
+            count++;
+        }
+    }
+
+    if (count % 2 === 0) {
+        return "Richard";
+    } else {
+        return "Louise";
+    }
+}
+
+console.log("Counter game");
+console.log(counterGame(6)); // expect Richard
+console.log(counterGame(8)); // expect Louise
 console.log();
 
 {
