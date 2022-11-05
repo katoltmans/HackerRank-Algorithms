@@ -108,11 +108,66 @@ console.log(stockmax([5, 3, 2])); // expect 0
 console.log();
 
 {
-    /*  */
+    /*
+    Simple Text Editor
+    
+    Implement a simple text editor. The editor initially contains an empty string, S. Perform Q operations of the following 4 types:
+        1. append(W) - Append string W to the end of S.
+        2. delete(k) - Delete the last k characters of S.
+        3. print(k) - Print the kth character of S.
+        4. undo() - Undo the last (not previously undone) operation of type 1 or 2, reverting S to the state it was in prior to that operation.
+    */
 }
 
-console.log("");
+function processData(input) {
+    // Create switch case based on the initial input
 
+    // input = input.split("\n");
+    // console.log("INPUT:", input);
+    let runningString = "";
+    let stack = [runningString];
+
+    for (let i = 1; i < input.length; i++) {
+        const [op, text] = input[i].split(" ");
+        // console.log("QUERY:", query);
+
+        switch (op) {
+            case "1":
+                runningString += text;
+                // console.log("RUNNING STRING:", runningString);
+                stack.push(runningString);
+                //console.log("STACK:", stack);
+                break;
+            case "2":
+                let toDelete = parseInt(text);
+                //console.log("TO DELETE:", toDelete);
+                runningString = runningString.substring(
+                    0,
+                    runningString.length - toDelete
+                );
+                //console.log("AFTER DELETE:", runningString);
+                stack.push(runningString);
+                break;
+            case "3":
+                // console.log(input[i])
+                // console.log("RUNNING STRING:", runningString);
+                let index = parseInt(text - 1);
+                // //console.log("PRINT INDEX:", index);
+                console.log(runningString[index]);
+                break;
+            case "4":
+                stack.pop();
+                runningString = stack[stack.length - 1];
+                break;
+        }
+    }
+    return;
+}
+
+console.log("Simple Text Editor");
+console.log(
+    processData(["1 abc", "3 3", "2 3", "1 xy", "3 2", "4", "4", "3 1"]) // expect c y a
+);
 console.log();
 
 {
