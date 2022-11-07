@@ -56,34 +56,3 @@ console.log(isPositive(0)); //expect Zero Error
 console.log(isPositive(-5)); //expect Negative Error
 console.log();
 
-{
-    /*  */
-}
-
-console.log("");
-console.log();
-console.log();
-
-{
-    /*  */
-}
-
-console.log("");
-console.log();
-console.log();
-
-{
-    /*  */
-}
-
-console.log("");
-console.log();
-console.log();
-
-{
-    /*  */
-}
-
-console.log("");
-console.log();
-console.log();
