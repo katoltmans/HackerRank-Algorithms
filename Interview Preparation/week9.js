@@ -171,11 +171,54 @@ console.log(
 console.log();
 
 {
-    /*  */
+    /*
+    Equal Stacks
+    
+    You have three stacks of cylinders where each cylinder has the same diameter, but they may vary in height. 
+    You can change the height of a stack by removing and discarding its topmost cylinder any number of times.
+    Find the maximum possible height of the stacks such that all of the stacks are exactly the same height. 
+    This means you must remove zero or more cylinders from the top of zero or more of the three stacks until 
+    they are all the same height, then return the height.
+      */
 }
 
-console.log("");
+function equalStacks(h1, h2, h3) {
+    // Reduce each array to find the initial sum of each
+    // Shift first elements of arrays that are greater than the lowest sum until all arrays are an equal height
+    // Subtact the shifted sum from the stack total
+    // Min sum of stacks is the comparison value until all stacks are even
 
+    let h1Total = h1.reduce((a, b) => a + b);
+    let h2Total = h2.reduce((a, b) => a + b);
+    let h3Total = h3.reduce((a, b) => a + b);
+
+    let min = Math.min(h1Total, h2Total, h3Total);
+
+    while (true) {
+        if (h1Total === h2Total && h2Total === h3Total) {
+            return min;
+        }
+
+        if (h1Total !== min) {
+            h1Total -= h1.shift();
+        }
+
+        if (h2Total !== min) {
+            h2Total -= h2.shift();
+        }
+
+        if (h3Total !== min) {
+            h3Total -= h3.shift();
+        }
+        min = Math.min(h1Total, h2Total, h3Total);
+    }
+
+    return min;
+}
+
+console.log("Equal Stacks");
+console.log(equalStacks([3, 2, 1, 1, 1], [4, 3, 2], [1, 1, 4, 1])); // expect 5
+console.log(equalStacks([1, 2, 1, 1], [1, 1, 2], [1, 1])); // expect 2
 console.log();
 
 {
