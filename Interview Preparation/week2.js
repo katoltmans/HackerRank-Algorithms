@@ -182,11 +182,42 @@ console.log(countingValleys(12, "DDUUDDUDUUUD")); // expect 2
 console.log();
 
 {
-    /*  */
+    /*
+    Pangrams
+    
+    A pangram is a string that contains every letter of the alphabet. Given a sentence determine whether it is a pangram in the English alphabet. 
+    Ignore case. Return either pangram or not pangram as appropriate.
+    */
 }
 
-console.log("");
+function pangrams(s) {
+    let upper = s.toUpperCase();
 
+    for (let i = 65; i <= 90; i++) {
+        let ascii = String.fromCharCode(i);
+        if (!upper.includes(ascii)) {
+            return "not pangram";
+        }
+    }
+
+    return "pangram";
+
+    // let newString = s.toLowerCase()
+    // const panMap = [];
+    // let keyCount = 0;
+
+    // for (let i=0; i<newString.length; i++){
+    //     if(panMap.findIndex((element) => { return element === newString[i]}) === -1 && /[a-z]/g.test(newString[i])) {
+    //         panMap.push(newString[i]);
+    //     }
+    // }
+}
+
+console.log("Pangrams");
+console.log(
+    pangrams("We promptly judged antique ivory buckles for the next prize")
+); //expect pangram
+console.log(pangrams("We promptly judged antique ivory buckles for the prize")); //expect not pangram (missing x)
 console.log();
 
 {
