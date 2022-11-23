@@ -230,11 +230,66 @@ console.log("");
 console.log();
 
 {
-    /*  */
+    /*
+    Two Characters
+    
+    Given a string, remove characters until the string is made up of any two alternating characters. 
+    When you choose a character to remove, all instances of that character must be removed. 
+    Determine the longest string possible that contains just two alternating letters.
+    */
 }
 
-console.log("");
+function alternate(s) {
+    // Find unique characters of the string
+    // Use a regular expression to filter out non matching pairs of characters
+    // Check if the new string alternates - if so compare to max length
 
+    let maxLength = 0;
+
+    // Create an array of unique characters
+    let uniqueStr = [...new Set(s)].join("");
+    // console.log("STRING:", s, "UNIQUE STRING:", uniqueStr);
+
+    for (let i = 0; i < uniqueStr.length; i++) {
+        let count = 0;
+        for (let j = i + 1; j < uniqueStr.length; j++) {
+            let subCount = 2;
+
+            // Regular expression to filter out characters that do not match
+            let regEx = new RegExp("[^" + uniqueStr[i] + uniqueStr[j] + "]");
+            // console.log("REGEX:", regEx);
+
+            // Create a new string with only matching characters
+            let newStr = s.split(regEx).join("");
+            // console.log("NEW STRING:", newStr);
+
+            // Check if characters of newStr alternates
+            for (let k = 0; k < newStr.length - 2; k++) {
+                if (
+                    newStr[k] !== newStr[k + 2] ||
+                    newStr[k] === newStr[k + 1]
+                ) {
+                    subCount = 0;
+                    break;
+                } else {
+                    subCount++;
+                }
+            }
+
+            // Set maxLength to count if the count is larger
+            count = subCount;
+            maxLength = Math.max(maxLength, count);
+            // console.log("MAX LENGTH", maxLength);
+        }
+    }
+
+    return maxLength;
+}
+
+console.log("Two Characters");
+console.log(alternate("beabeefeab")); // expect 5
+console.log(alternate("asdcbsdcagfsdbgdfanfghbsfdab")); // expect 8
+console.log(alternate("asvkugfiugsalddlasguifgukvsa")); // expect 0
 console.log();
 
 {
