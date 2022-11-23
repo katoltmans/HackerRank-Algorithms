@@ -222,11 +222,42 @@ console.log(equalStacks([1, 2, 1, 1], [1, 1, 2], [1, 1])); // expect 2
 console.log();
 
 {
-    /*  */
+    /*
+    The Coin Change Problem
+    
+    Given an amount and the denominations of coins available, determine how many ways change can be made for amount. 
+    There is a limitless supply of each coin type. (Coins are not standard denominations)
+    */
 }
 
-console.log("");
+function getWays(n, c) {
+    // Prefill an array with on and zeros according to coin array length
+    // Track coin totals while iterating through the array - return final index
 
+    // Early return
+    if (c.length < 1) {
+        return 0;
+    }
+
+    // Preload array with 1 to take care of zero spot and fill rest with zeros to keep track of counts
+    let storage = [1, ...Array(n).fill(0)];
+    // console.log("STORAGE:", storage);
+
+    // Iterate through the coin array
+    for (let i = 0; i < c.length; i++) {
+        // Count coin totals and track in storage array
+        for (let j = c[i]; j <= n; j++) {
+            storage[j] += storage[j - c[i]];
+            // console.log(storage);
+        }
+    }
+    // return last value of the storage array because that is the number of combinations that worked to create n
+    return storage[n];
+}
+
+console.log("The Coin Change Problem");
+console.log(getWays(4, [1, 2, 3])); // expect 4
+console.log(getWays(10, [2, 5, 3, 6])); // expect 5
 console.log();
 
 {
