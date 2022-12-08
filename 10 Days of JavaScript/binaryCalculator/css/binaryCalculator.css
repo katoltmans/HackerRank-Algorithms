@@ -4,9 +4,9 @@ body {
 
 #res {
     height: 48px;
-    font-size: 24px;
+    font-size: 20px;
     background-color: lightgray;
-    border: solid 2px black;
+    border: solid black;
 }
 
 .btn {
